@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Force Touch Scale</title>
+        <style>
+            .forceTouchScale {
+                width: 200px;
+                height: 200px;
+                background-color: lightblue;
+                border: 2px solid lightcoral;
+                border-radius: 12px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin: -100px 0 0 -100px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-family: sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="forceTouchScale">
+            <p id="webkitForceValue"></p>
+        </div>
+        <script>
+            const forceTouchScale = document.querySelector(".forceTouchScale");
+            forceTouchScale.addEventListener("webkitmouseforcechanged", (e) => {
+                // 0 - depressed
+                // 1 - light click
+                // 2 - force click start
+                // 3 - max force
+                console.log(e.webkitForce);
+                forceTouchScale.style.transform = `scale(${1 + e.webkitForce})`;
+                webkitForceValue.innerHTML = e.webkitForce;
+            });
+        </script>
+    </body>
+</html>
