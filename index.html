@@ -32,7 +32,7 @@
                 // 0 - depressed
                 // 1 - light click
                 // 2 - force click start
-                // 3 - max force
+                // 3 - theoretical max force (never achievable)
                 console.log(e.webkitForce);
                 forceTouchScale.style.transform = `scale(${1 + e.webkitForce})`;
                 webkitForceValue.innerHTML = e.webkitForce;
